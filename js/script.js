@@ -1,12 +1,23 @@
+let scoreL = 0;
+let scoreW = 0;
 $(".play").click(function() {
   let random = Math.random() * 3;
   let number = Math.ceil(random);
   let choice = $("input").val();
   $(".userChoice").text(`${choice}`);
 function computerChoice(x) {
-let scoreL = $(".loses").val()
   $(".result").text(`you ${x}`);
+  if (x === "lose"){
+      scoreL = scoreL + 1;
+    $(".loses").text(`Loses: ${scoreL}`);
 }
+  else if ( x === "win"){
+      scoreW = scoreW + 1;
+    $(".wins").text(`Wins: ${scoreW}`);
+  }
+}
+
+
   /* scissor */
   if (number === 1) {
     $(".computerChoice").text("scissor");
@@ -26,7 +37,8 @@ let scoreL = $(".loses").val()
     } else if (choice === "paper") {
       $(".result").text(`tie`);
     } else if (choice === "rock") {
-      computerChoice("lose")
+      computerChoice("lose");
+
     }
   }
   /* rock */
